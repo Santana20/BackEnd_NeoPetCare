@@ -12,7 +12,7 @@ public class Mascota
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idMascota;
+	private Long idMascota;
 	
 	private String Nombre;
 	private int edad;

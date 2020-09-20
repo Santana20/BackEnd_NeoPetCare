@@ -12,7 +12,7 @@ public class Vacuna
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idVacuna;
+	private Long idVacuna;
 	private String nombreVacuna;
 	//FK
 	//Tipo tipoVacuna;

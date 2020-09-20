@@ -12,6 +12,6 @@ public class TipoMascota
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idTipo;
+	private Long idTipo;
 	private String nombreTipo;
 }

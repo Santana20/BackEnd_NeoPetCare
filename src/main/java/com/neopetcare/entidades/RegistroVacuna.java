@@ -14,7 +14,7 @@ public class RegistroVacuna
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idRegistroVacuna;
+	private Long idRegistroVacuna;
 	
 	private Date FechaRegistro;
 	private boolean status;
