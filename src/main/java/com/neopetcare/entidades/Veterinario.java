@@ -1,10 +1,16 @@
 package com.neopetcare.entidades;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name ="Veterinario")
@@ -12,7 +18,7 @@ public class Veterinario
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idVeterinario;
+	private Long idVeterinario;
 	
 	private String nombre;
 	private String apellido;
@@ -22,11 +28,16 @@ public class Veterinario
 	private String username;
 	private String password;
 	
+	@OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Horario> horarios;
 	
-	public int getIdVeterinario() {
+	@OneToMany(mappedBy = "veterinario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Cita> citas;
+	
+	public Long getIdVeterinario() {
 		return idVeterinario;
 	}
-	public void setIdVeterinario(int idVeterinario) {
+	public void setIdVeterinario(Long idVeterinario) {
 		this.idVeterinario = idVeterinario;
 	}
 	public String getNombre() {
@@ -70,6 +81,18 @@ public class Veterinario
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public List<Horario> getHorarios() {
+		return horarios;
+	}
+	public void setHorarios(List<Horario> horarios) {
+		this.horarios = horarios;
+	}
+	public List<Cita> getCitas() {
+		return citas;
+	}
+	public void setCitas(List<Cita> citas) {
+		this.citas = citas;
 	}
 	
 

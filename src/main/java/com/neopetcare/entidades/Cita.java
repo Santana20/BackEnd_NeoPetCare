@@ -6,7 +6,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name ="Cita")
@@ -14,27 +18,27 @@ public class Cita
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCita;
+	private Long idCita;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "Veterinario")
-//	@JsonIgnore
-//	private Veterinario veterinario;
+	@ManyToOne
+	@JoinColumn(name = "Veterinario")
+	@JsonIgnore
+	private Veterinario veterinario;
 
-//	@ManyToOne
-//	@JoinColumn(name = "Mascota")
-//	@JsonIgnore
-//	private Mascota mascota;
+	@ManyToOne
+	@JoinColumn(name = "Mascota")
+	@JsonIgnore
+	private Mascota mascota;
 	
 	private Date fecha;
 	private Date hora;
 	private Boolean estado;
 	
 	
-	public int getIdCita() {
+	public Long getIdCita() {
 		return idCita;
 	}
-	public void setIdCita(int idCita) {
+	public void setIdCita(Long idCita) {
 		this.idCita = idCita;
 	}
 	public Date getFecha() {

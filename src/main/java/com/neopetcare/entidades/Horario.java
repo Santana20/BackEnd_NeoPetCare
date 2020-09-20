@@ -19,22 +19,22 @@ public class Horario
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idHorario;
+	private Long idHorario;
 	
 	private Date dia;
 	private Date hora;
 	private String nota;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "Veterinario")
-//	@JsonIgnore
-//	private Veterinario veterinario;
+	@ManyToOne
+	@JoinColumn(name = "Veterinario")
+	@JsonIgnore
+	private Veterinario veterinario;
 	
 	
-	public int getIdHorario() {
+	public Long getIdHorario() {
 		return idHorario;
 	}
-	public void setIdHorario(int idHorario) {
+	public void setIdHorario(Long idHorario) {
 		this.idHorario = idHorario;
 	}
 	public Date getDia() {
@@ -54,6 +54,12 @@ public class Horario
 	}
 	public void setNota(String nota) {
 		this.nota = nota;
+	}
+	public Veterinario getVeterinario() {
+		return veterinario;
+	}
+	public void setVeterinario(Veterinario veterinario) {
+		this.veterinario = veterinario;
 	}
 
 
