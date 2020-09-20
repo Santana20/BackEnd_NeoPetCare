@@ -1,9 +1,14 @@
 package com.neopetcare.entidades;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,15 +17,18 @@ public class Cuidado
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idCuidado;
+	private Long idCuidado;
 	
 	private String nombre;
+	
+	@OneToMany(mappedBy = "cuidado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Registro_Cuidado> registro_cuidado;
 
-	public int getIdCuidado() {
+	public Long getIdCuidado() {
 		return idCuidado;
 	}
 
-	public void setIdCuidado(int idCuidado) {
+	public void setIdCuidado(Long idCuidado) {
 		this.idCuidado = idCuidado;
 	}
 
@@ -31,5 +39,14 @@ public class Cuidado
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	public List<Registro_Cuidado> getRegistro_cuidado() {
+		return registro_cuidado;
+	}
+
+	public void setRegistro_cuidado(List<Registro_Cuidado> registro_cuidado) {
+		this.registro_cuidado = registro_cuidado;
+	}
+	
 	
 }
