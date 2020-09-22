@@ -25,10 +25,7 @@ public class Mascota
 	
 	private String Nombre;
 	private int edad;
-	private int peso;
-	//FK
-	//Usuario dueño;
-	//TipoMascota tipo;
+	private double peso;
 	
 	@OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Registro_Cuidado> registro_cuidados;
@@ -75,11 +72,11 @@ public class Mascota
 		this.edad = edad;
 	}
 
-	public int getPeso() {
+	public double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(int peso) {
+	public void setPeso(double peso) {
 		this.peso = peso;
 	}
 
