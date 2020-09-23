@@ -22,7 +22,7 @@ public class Cuidado
 	private String nombre;
 	
 	@OneToMany(mappedBy = "cuidado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Registro_Cuidado> registro_cuidado;
+	private List<RegistroCuidado> registro_cuidado;
 
 	public Long getIdCuidado() {
 		return idCuidado;
@@ -40,11 +40,11 @@ public class Cuidado
 		this.nombre = nombre;
 	}
 
-	public List<Registro_Cuidado> getRegistro_cuidado() {
+	public List<RegistroCuidado> getRegistro_cuidado() {
 		return registro_cuidado;
 	}
 
-	public void setRegistro_cuidado(List<Registro_Cuidado> registro_cuidado) {
+	public void setRegistro_cuidado(List<RegistroCuidado> registro_cuidado) {
 		this.registro_cuidado = registro_cuidado;
 	}
 	

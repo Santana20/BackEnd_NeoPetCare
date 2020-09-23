@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name ="Registro_Cuidado")
-public class Registro_Cuidado 
+@Table(name ="RegistroCuidado")
+public class RegistroCuidado 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idRegistro_Cuidado;
+	private Long idRegistroCuidado;
 	
 	@ManyToOne
 	@JoinColumn(name = "Mascota")
@@ -28,6 +28,7 @@ public class Registro_Cuidado
 	@ManyToOne
 	@JoinColumn(name = "Cuidado")
 	@JsonIgnore
+	
 	private Cuidado cuidado;
 	
 	private Date fecha;
@@ -46,11 +47,11 @@ public class Registro_Cuidado
 		this.cuidado = cuidado;
 	}
 	
-	public Long getIdRegistro_Cuidado() {
-		return idRegistro_Cuidado;
+	public Long getIdRegistroCuidado() {
+		return idRegistroCuidado;
 	}
-	public void setIdRegistro_Cuidado(Long idRegistro_Cuidado) {
-		this.idRegistro_Cuidado = idRegistro_Cuidado;
+	public void setIdRegistroCuidado(Long idRegistroCuidado) {
+		this.idRegistroCuidado = idRegistroCuidado;
 	}
 	public Date getFecha() {
 		return fecha;

@@ -28,7 +28,7 @@ public class Mascota
 	private double peso;
 	
 	@OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Registro_Cuidado> registro_cuidados;
+	private List<RegistroCuidado> registro_cuidados;
 	
 	@OneToMany(mappedBy = "mascota", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Cita> citas;
@@ -80,11 +80,11 @@ public class Mascota
 		this.peso = peso;
 	}
 
-	public List<Registro_Cuidado> getRegistro_cuidados() {
+	public List<RegistroCuidado> getRegistro_cuidados() {
 		return registro_cuidados;
 	}
 
-	public void setRegistro_cuidados(List<Registro_Cuidado> registro_cuidados) {
+	public void setRegistro_cuidados(List<RegistroCuidado> registro_cuidados) {
 		this.registro_cuidados = registro_cuidados;
 	}
 

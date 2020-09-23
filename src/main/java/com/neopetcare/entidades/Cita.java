@@ -59,6 +59,18 @@ public class Cita
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
+	public Veterinario getVeterinario() {
+		return veterinario;
+	}
+	public void setVeterinario(Veterinario veterinario) {
+		this.veterinario = veterinario;
+	}
+	public Mascota getMascota() {
+		return mascota;
+	}
+	public void setMascota(Mascota mascota) {
+		this.mascota = mascota;
+	}
 
 	
 }
