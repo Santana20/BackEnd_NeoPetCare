@@ -27,7 +27,7 @@ public class Vacuna
 	//Tipo tipoVacuna;
 	
 	@OneToMany(mappedBy = "vacuna", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<RegistroVacuna> registro_vacunas;
+	private List<VacunaMascota> registro_vacunas;
 	
 	@ManyToOne
 	@JoinColumn(name = "TipoMascota")
@@ -50,11 +50,11 @@ public class Vacuna
 		this.nombreVacuna = nombreVacuna;
 	}
 
-	public List<RegistroVacuna> getRegistro_vacunas() {
+	public List<VacunaMascota> getRegistro_vacunas() {
 		return registro_vacunas;
 	}
 
-	public void setRegistro_vacunas(List<RegistroVacuna> registro_vacunas) {
+	public void setRegistro_vacunas(List<VacunaMascota> registro_vacunas) {
 		this.registro_vacunas = registro_vacunas;
 	}
 

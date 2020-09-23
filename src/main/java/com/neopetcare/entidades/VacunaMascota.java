@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name="RegistroVacuna")
-public class RegistroVacuna 
+@Table(name="VacunaMascota")
+public class VacunaMascota 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idRegistroVacuna;
+	private Long idVacunaMascota;
 	
 	private Date FechaRegistro;
 	private boolean status;
@@ -33,12 +33,12 @@ public class RegistroVacuna
 	@JsonIgnore
 	private Vacuna vacuna;
 
-	public Long getIdRegistroVacuna() {
-		return idRegistroVacuna;
+	public Long getidVacunaMascota() {
+		return idVacunaMascota;
 	}
 
-	public void setIdRegistroVacuna(Long idRegistroVacuna) {
-		this.idRegistroVacuna = idRegistroVacuna;
+	public void setidVacunaMascota(Long idVacunaMascota) {
+		this.idVacunaMascota = idVacunaMascota;
 	}
 
 	public Date getFechaRegistro() {

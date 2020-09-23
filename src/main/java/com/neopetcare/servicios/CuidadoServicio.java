@@ -24,7 +24,7 @@ public class CuidadoServicio
 	public Cuidado obtenerCuidado(Long cod) throws Exception
 	{
 		Cuidado c = RepositorioCuidado.encontrarCuidadoporId(cod);
-		if ( c == null ) throw new Exception( "Cuidado no encontrado." );
+		if ( c == null ) throw new Exception( "Cuidado no encontrada." );
 		return c;
 	}
 	
