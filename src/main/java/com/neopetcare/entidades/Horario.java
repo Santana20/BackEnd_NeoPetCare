@@ -21,8 +21,8 @@ public class Horario
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idHorario;
 	
-	private Date dia;
-	private Date hora;
+	private String dia;
+	private String hora;
 	private String nota;
 	
 	@ManyToOne
@@ -37,16 +37,16 @@ public class Horario
 	public void setIdHorario(Long idHorario) {
 		this.idHorario = idHorario;
 	}
-	public Date getDia() {
+	public String getDia() {
 		return dia;
 	}
-	public void setDia(Date dia) {
+	public void setDia(String dia) {
 		this.dia = dia;
 	}
-	public Date getHora() {
+	public String getHora() {
 		return hora;
 	}
-	public void setHora(Date hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 	public String getNota() {

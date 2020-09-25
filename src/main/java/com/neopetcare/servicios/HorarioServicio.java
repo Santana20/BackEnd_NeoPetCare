@@ -6,17 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neopetcare.entidades.Horario;
+import com.neopetcare.entidades.Veterinario;
 import com.neopetcare.repositorios.HorarioRepositorio;
+import com.neopetcare.repositorios.VeterinarioRepositorio;
 
 @Service
 public class HorarioServicio
 {
 	@Autowired
 	private HorarioRepositorio RepositorioHorario;
+	@Autowired
+	private VeterinarioRepositorio RepositorioVeterinario;
 	
 	//REGISTRAR HORARIO
-	public void registrarHorario(Horario horario)
+	public void registrarHorario(Horario horario, Long idVeterinario)  throws Exception
 	{
+		Veterinario v = RepositorioVeterinario.encontrarVeterinarioporId(idVeterinario);
+		if ( v == null ) throw new Exception("Veterinario no encontrado.");
+		horario.setVeterinario(v);
 		RepositorioHorario.save(horario);
 	}
 	

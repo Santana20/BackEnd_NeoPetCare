@@ -32,7 +32,6 @@ public class RegistroCuidado
 	private Cuidado cuidado;
 	
 	private Date fecha;
-	private Date hora;
 	
 	public Mascota getMascota() {
 		return mascota;
@@ -59,12 +58,5 @@ public class RegistroCuidado
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Date getHora() {
-		return hora;
-	}
-	public void setHora(Date hora) {
-		this.hora = hora;
-	}
-
 	
 }

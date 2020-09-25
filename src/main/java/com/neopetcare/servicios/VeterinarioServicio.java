@@ -15,8 +15,7 @@ public class VeterinarioServicio
 	private VeterinarioRepositorio RepositorioVeterinario;
 	
 	//REGISTRAR VETERINARIO
-	public void registrarVeterinario(Veterinario veterinario)
-	{
+	public void registrarVeterinario(Veterinario veterinario){
 		RepositorioVeterinario.save(veterinario);
 	}
 	
