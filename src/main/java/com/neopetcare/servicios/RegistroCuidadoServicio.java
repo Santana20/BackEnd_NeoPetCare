@@ -5,22 +5,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neopetcare.entidades.Cuidado;
+import com.neopetcare.entidades.Mascota;
 import com.neopetcare.entidades.RegistroCuidado;
+import com.neopetcare.entidades.VacunaMascota;
 import com.neopetcare.repositorios.RegistroCuidadoRepositorio;
+import com.neopetcare.repositorios.CuidadoRepositorio;
+import com.neopetcare.repositorios.MascotaRepositorio;
 
 @Service
 public class RegistroCuidadoServicio
 {
 	@Autowired
 	private RegistroCuidadoRepositorio RepositorioRegistroCuidado;
+	@Autowired
+	private MascotaRepositorio RepositorioMascota;
+	@Autowired
+	private CuidadoRepositorio RepositorioCuidado;
 	
-	//REGISTRAR HORARIO
-	public void registrarRegistroCuidado(RegistroCuidado registroCuidado)
+	//REGISTRAR REGISTRO CUIDADO
+	public void registrarRegistroCuidado(Long idMascota, Long idCuidado, RegistroCuidado registroCuidado) throws Exception
 	{
+		Mascota m = RepositorioMascota.encontrarMascotaporId(idMascota);
+		if ( m == null ) throw new Exception("Mascota no encontrada.");
+		registroCuidado.setMascota(m);
+		
+		Cuidado c = RepositorioCuidado.encontrarCuidadoporId(idCuidado);
+		if ( c == null ) throw new Exception("Cuidado no encontrado.");
+		registroCuidado.setCuidado(c);
+		
 		RepositorioRegistroCuidado.save(registroCuidado);
 	}
 	
-	//OBTENER HORARIO
+	//OBTENER REGISTRO CUIDADO
 	public RegistroCuidado obtenerRegistroCuidado(Long cod) throws Exception
 	{
 		RegistroCuidado h = RepositorioRegistroCuidado.encontrarRegistroCuidadoporId(cod);
@@ -28,19 +45,18 @@ public class RegistroCuidadoServicio
 		return h;
 	}
 	
-	//ACTUALIZAR HORARIO
+	//ACTUALIZAR REGISTRO CUIDADO
 	public void actualizarRegistroCuidado(RegistroCuidado registroCuidado) throws Exception
 	{
 		RegistroCuidado h = obtenerRegistroCuidado(registroCuidado.getIdRegistroCuidado());
 		
 		if ( registroCuidado.getFecha() != null ) h.setFecha(registroCuidado.getFecha());
-		if ( registroCuidado.getHora() != null ) h.setHora(registroCuidado.getHora());
 
 		RepositorioRegistroCuidado.save(h);
 		return;
 	}
 	
-	//ELIMINAR HORARIO
+	//ELIMINAR REGISTRO CUIDADO
 	public void eliminarRegistroCuidado(Long codigo) throws Exception
 	{
 		RegistroCuidado h = obtenerRegistroCuidado(codigo);
@@ -48,10 +64,16 @@ public class RegistroCuidadoServicio
 		RepositorioRegistroCuidado.delete(h);
 	}
 	
-	//LISTAR TODOS LOS HORARIOS
+	//LISTAR TODOS LOS REGISTROS CUIDADO
 	public List<RegistroCuidado> listarRegistroCuidado()
 	{
 		return RepositorioRegistroCuidado.findAll();
+	}
+	
+	//LISTAR TODOS LOS REGISTROS CUIDADO POR MASCOTA
+	public List<RegistroCuidado> listarRegistroCuidadoMascota(Long idMascota)
+	{
+		return RepositorioRegistroCuidado.listarCuidadoMascota(idMascota);
 	}
 	
 }

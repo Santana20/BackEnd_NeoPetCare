@@ -6,17 +6,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.neopetcare.entidades.Cita;
+import com.neopetcare.entidades.Mascota;
+import com.neopetcare.entidades.Veterinario;
 import com.neopetcare.repositorios.CitaRepositorio;
+import com.neopetcare.repositorios.MascotaRepositorio;
+import com.neopetcare.repositorios.VeterinarioRepositorio;
 
 @Service
 public class CitaServicio
 {
 	@Autowired
 	private CitaRepositorio RepositorioCita;
+	@Autowired
+	private VeterinarioRepositorio RepositorioVeterinario;
+	@Autowired
+	private MascotaRepositorio RepositorioMascota;
 	
 	//REGISTRAR CITA
-	public void registrarCita(Cita cita)
+	public void registrarCita(Cita cita, Long idMascota, Long idVeterinario) throws Exception
 	{
+		Veterinario v = RepositorioVeterinario.encontrarVeterinarioporId(idVeterinario);
+		if ( v == null ) throw new Exception("Veterinario no encontrado.");
+		cita.setVeterinario(v);
+		
+		Mascota m = RepositorioMascota.encontrarMascotaporId(idMascota);
+		if(m == null) throw new Exception("Mascota no encontrada");
+		cita.setMascota(m);
+		
 		RepositorioCita.save(cita);
 	}
 	
