@@ -47,7 +47,6 @@ public class Mascota
 	private TipoMascota tipomascota;
 	
 	
-	
 	public Long getIdMascota() {
 		return idMascota;
 	}

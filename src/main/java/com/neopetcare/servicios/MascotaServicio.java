@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neopetcare.converters.ConverterMascota;
 import com.neopetcare.entidades.Mascota;
+import com.neopetcare.entidades.TipoMascota;
+import com.neopetcare.entidades.Usuario;
 import com.neopetcare.repositorios.MascotaRepositorio;
 
 @Service
@@ -14,10 +17,24 @@ public class MascotaServicio
 	@Autowired
 	private MascotaRepositorio RepositorioMascota;
 	
+	@Autowired
+	private UsuarioServicio servicioUsuario;
+	
+	@Autowired
+	private TipoMascotaServicio servicioTipoMascota;
+	
 	//REGISTRAR MASCOTA
-	public void registrarMascota(Long codUsuario, Mascota mascota)
+	public void registrarMascota(Long codUsuario, ConverterMascota mascota) throws Exception
 	{
-		RepositorioMascota.save(mascota);
+		Usuario u = servicioUsuario.obtenerUsuario(codUsuario);
+		
+		TipoMascota tm = servicioTipoMascota.obtenerTipoMascota(mascota.getIdtipomascota());
+		
+		Mascota m = mascota.getMascota();
+		m.setUsuario(u);
+		m.setTipomascota(tm);
+		RepositorioMascota.save(m);
+		return;
 	}
 	
 	//OBTENER MASCOTA
