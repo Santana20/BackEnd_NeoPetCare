@@ -13,6 +13,6 @@ public interface VacunaRepositorio extends JpaRepository<Vacuna, Long>
 	@Query( "Select v from Vacuna v where v.idVacuna = :idVacuna" )
 	Vacuna encontrarVacunaporId( @Param("idVacuna") Long idVacuna );
 	
-	@Query( "Select v fron Vacuna v where v.tipomascota = :idTipoMascota" )
+	@Query( "Select v from Vacuna v where v.tipomascota.idTipo = :idTipoMascota" )
 	List<Vacuna> listarVacunaporTipo( @Param("idTipoMascota") Long idTipoMascota );
 }
