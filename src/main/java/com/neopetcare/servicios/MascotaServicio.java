@@ -46,8 +46,9 @@ public class MascotaServicio
 	}
 	
 	//ACTUALIZAR MASCOTA
-	public void actualizarMascota(Mascota mascota) throws Exception
+	public void actualizarMascota(ConverterMascota mascota) throws Exception
 	{
+		
 		Mascota m = obtenerMascota(mascota.getIdMascota());
 		
 		if ( mascota.getNombre() != null ) m.setNombre(mascota.getNombre());
@@ -56,9 +57,10 @@ public class MascotaServicio
 		
 		if ( mascota.getPeso() != 0.0 ) m.setPeso(mascota.getPeso());
 		
-		if ( mascota.getTipomascota() != null )
+		if ( mascota.getIdtipomascota() != null && mascota.getIdtipomascota() != m.getTipomascota().getIdTipo() )
 		{
-			m.setTipomascota(mascota.getTipomascota());
+			TipoMascota tm = servicioTipoMascota.obtenerTipoMascota(mascota.getIdtipomascota());
+			m.setTipomascota(tm);
 		}
 		
 		RepositorioMascota.save(m);
@@ -71,6 +73,7 @@ public class MascotaServicio
 		Mascota m = obtenerMascota(codigo);
 		
 		RepositorioMascota.delete(m);
+		return;
 	}
 	
 	//LISTAR TODAS LAS MASCOTAS

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.neopetcare.entidades.Cuidado;
 import com.neopetcare.entidades.Mascota;
 import com.neopetcare.entidades.RegistroCuidado;
-import com.neopetcare.entidades.VacunaMascota;
 import com.neopetcare.repositorios.RegistroCuidadoRepositorio;
 import com.neopetcare.repositorios.CuidadoRepositorio;
 import com.neopetcare.repositorios.MascotaRepositorio;

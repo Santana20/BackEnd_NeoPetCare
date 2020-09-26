@@ -42,7 +42,7 @@ public class RestMascota
 	
 	//ACTUALIZAR MASCOTA
 	@PutMapping("/mascota/actualizarMascota")
-	public void actualizarMascota(@RequestBody Mascota mascota)
+	public void actualizarMascota(@RequestBody ConverterMascota mascota)
 	{
 		try
 		{
@@ -50,7 +50,7 @@ public class RestMascota
 		}
 		catch (Exception e)
 		{
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se pudo actualizar a la mascota.");
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getMessage());
 		}
 		
 		return;

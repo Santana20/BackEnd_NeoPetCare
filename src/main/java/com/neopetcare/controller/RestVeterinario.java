@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.neopetcare.servicios.VeterinarioServicio;
-import com.neopetcare.entidades.Cita;
 import com.neopetcare.entidades.Veterinario;
 
 @RestController

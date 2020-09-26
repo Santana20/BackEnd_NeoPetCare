@@ -24,16 +24,17 @@ public class RestVacunaMascota
 	private VacunaMascotaServicio servicioVacunaMascota;
 	
 	//REGISTRAR VACUNA DE UNA MASCOTA
-	@PostMapping("/vacunamascota/registrarVacunaMascota/{idMascota}")	
-	public void registrarVacunaMascota(@PathVariable(value = "idMascota") Long idMascota, @RequestBody VacunaMascota vm)
+	@PostMapping("/vacunamascota/registrarVacunaMascota/{idMascota}/{idVacuna}")	
+	public void registrarVacunaMascota(@PathVariable(value = "idMascota") Long idMascota, 
+			@PathVariable(value = "idVacuna") Long idVacuna, @RequestBody VacunaMascota vm)
 	{
 		try
         {
-			servicioVacunaMascota.registrarVacunaMascota(idMascota, vm);
+			servicioVacunaMascota.registrarVacunaMascota(idMascota, idVacuna, vm);
         }
         catch (Exception e)
         {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se pudo registrar la vacuna de la mascota.");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "No se pudo registrar la vacuna de la mascota.\n"+e.getMessage());
         }
 		
 		return;
@@ -62,7 +63,7 @@ public class RestVacunaMascota
 		List<VacunaMascota> lsVM = null;
 		try
         {
-			servicioVacunaMascota.listarVacunasdeMascota(idMascota);
+			lsVM = servicioVacunaMascota.listarVacunasdeMascota(idMascota);
         }
         catch (Exception e)
         {

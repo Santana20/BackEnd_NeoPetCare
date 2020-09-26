@@ -22,9 +22,8 @@ public class Vacuna
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idVacuna;
-	private String nombreVacuna;
-	//FK
-	//Tipo tipoVacuna;
+	
+	private String nombrevacuna;
 	
 	@OneToMany(mappedBy = "vacuna", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VacunaMascota> registro_vacunas;
@@ -42,12 +41,13 @@ public class Vacuna
 		this.idVacuna = idVacuna;
 	}
 
-	public String getNombreVacuna() {
-		return nombreVacuna;
+
+	public String getNombrevacuna() {
+		return nombrevacuna;
 	}
 
-	public void setNombreVacuna(String nombreVacuna) {
-		this.nombreVacuna = nombreVacuna;
+	public void setNombrevacuna(String nombrevacuna) {
+		this.nombrevacuna = nombrevacuna;
 	}
 
 	public List<VacunaMascota> getRegistro_vacunas() {

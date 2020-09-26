@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.neopetcare.entidades.TipoMascota;
 import com.neopetcare.entidades.Vacuna;
 import com.neopetcare.repositorios.VacunaRepositorio;
 
@@ -14,13 +15,20 @@ public class VacunaServicio
 	@Autowired
 	private VacunaRepositorio RepositorioVacuna;
 	
+	@Autowired
+	private TipoMascotaServicio servicioTipoMascota;
+	
 	//REGISTRO DE VACUNA
-	public void registrarVacuna(Vacuna vacuna)
+	public void registrarVacuna(Long idTipoMascota, Vacuna vacuna) throws Exception
 	{
+		TipoMascota tm = servicioTipoMascota.obtenerTipoMascota(idTipoMascota);
+		//if (vacuna.getNombreVacuna() == null) throw new Exception("si se agarra el nombre vacuna"+vacuna.getNombreVacuna());
+		vacuna.setTipomascota(tm);
 		RepositorioVacuna.save(vacuna);
+		return;
 	}
 	
-	//OBTENER CUIDADO
+	//OBTENER VACUNA
 	public Vacuna obtenerVacuna(Long cod) throws Exception
 	{
 		Vacuna v = RepositorioVacuna.encontrarVacunaporId(cod);
@@ -28,27 +36,27 @@ public class VacunaServicio
 		return v;
 	}
 	
-	//ACTUALIZAR CUIDADO
+	//ACTUALIZAR VACUNA
 	public void actualizarCuidado(Vacuna vacuna) throws Exception
 	{
 		Vacuna v = obtenerVacuna(vacuna.getIdVacuna());
 		
-		if ( vacuna.getNombreVacuna() != null ) v.setNombreVacuna(vacuna.getNombreVacuna());
+		if ( vacuna.getNombrevacuna() != null ) v.setNombrevacuna(vacuna.getNombrevacuna());
 		if ( vacuna.getTipomascota() != null ) v.setTipomascota(vacuna.getTipomascota());
 		RepositorioVacuna.save(v);
 		return;
 	}
 	
-	//ELIMINAR CUIDADO
-	public void eliminarVacuna(Long codigo) throws Exception
+	//ELIMINAR VACUNA
+	public void eliminarVacuna(Long idVacuna) throws Exception
 	{
-		Vacuna c = obtenerVacuna(codigo);
+		Vacuna c = obtenerVacuna(idVacuna);
 		
 		RepositorioVacuna.delete(c);
 	}
 	
-	//LISTAR TODOS LOS CUIDADOS
-	public List<Vacuna> listarCuidados()
+	//LISTAR TODAS LOS VACUNA
+	public List<Vacuna> listarVacunas()
 	{
 		return RepositorioVacuna.findAll();
 	}

@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.neopetcare.entidades.RegistroCuidado;
-import com.neopetcare.entidades.VacunaMascota;
 
 public interface RegistroCuidadoRepositorio extends JpaRepository<RegistroCuidado, Long> 
 {

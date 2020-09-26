@@ -21,6 +21,7 @@ public class VacunaMascota
 	private Long idVacunaMascota;
 	
 	private Date FechaRegistro;
+	private Date FechaVacunaRealizada;
 	private boolean status;
 	
 	@ManyToOne
@@ -32,14 +33,6 @@ public class VacunaMascota
 	@JoinColumn(name = "Vacuna")
 	@JsonIgnore
 	private Vacuna vacuna;
-
-	public Long getidVacunaMascota() {
-		return idVacunaMascota;
-	}
-
-	public void setidVacunaMascota(Long idVacunaMascota) {
-		this.idVacunaMascota = idVacunaMascota;
-	}
 
 	public Date getFechaRegistro() {
 		return FechaRegistro;
@@ -71,6 +64,22 @@ public class VacunaMascota
 
 	public void setVacuna(Vacuna vacuna) {
 		this.vacuna = vacuna;
+	}
+
+	public Long getIdVacunaMascota() {
+		return idVacunaMascota;
+	}
+
+	public void setIdVacunaMascota(Long idVacunaMascota) {
+		this.idVacunaMascota = idVacunaMascota;
+	}
+
+	public Date getFechaVacunaRealizada() {
+		return FechaVacunaRealizada;
+	}
+
+	public void setFechaVacunaRealizada(Date fechaVacunaRealizada) {
+		FechaVacunaRealizada = fechaVacunaRealizada;
 	}
 	
 	
